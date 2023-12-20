@@ -1,0 +1,5 @@
+two_digit_number = input("Give me a numer from 10 to 99: ")
+string_number = str(two_digit_number)
+number_one = int(string_number[0])
+number_two = int(string_number[1])
+print(number_one+number_two)
