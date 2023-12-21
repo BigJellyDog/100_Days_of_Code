@@ -26,8 +26,6 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 #
 #     print(f"Here's the decoded result: {decrypted_word}")
 
-print(art.art)
-
 
 def caesar(start_text, shift_amount, cipher_direction):
     end_text = ""
@@ -45,6 +43,7 @@ def caesar(start_text, shift_amount, cipher_direction):
 
 
 coder = True
+print(art.art)
 while coder:
 
     direction = input("Type 'encode' to encrypt, type 'decode to decrypt: \n")
