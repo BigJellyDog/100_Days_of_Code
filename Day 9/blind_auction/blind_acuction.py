@@ -20,17 +20,7 @@ def select_winner_to_list():
     for participant in auction_list:
         if winner_bet[0] == participant["bet"]:    # selecting the winner to a list
             winner_name.append(participant["name"])
-
-
-    # if auction_bets.count(winner_bet[0]) > 1:   # counting if there are more than 1 winner
-    #     winner_bet.clear()  # clear the list and restart
-    #     print("Two people bet the same amount, the auction will restart \n")
-    #     return False
-    # else:
-    #     print(f"The Winner is {winner_name} with a bid of ${winner_bet[0]}")
-    #     auction_bets.clear()
-    #     return True
-
+            
 
 bidders = "yes"
 while bidders == "yes":     # while loop to add all the bidders to the auction
