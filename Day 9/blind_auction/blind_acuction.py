@@ -23,9 +23,11 @@ def choose_winner():
     if auction_bets.count(auction_winner[0]) > 1:   # counting if there are more than 1 winner
         auction_winner.clear()  # clear the list and restart
         print("Two people bet the same amount, the auction will restart \n")
+        return False
     else:
         print(f"The Winner is {winner_name} with a bid of ${auction_winner[0]}")
         auction_bets.clear()
+        return True
 
 
 bidders = "yes"
@@ -36,14 +38,7 @@ while bidders == "yes":     # while loop to add all the bidders to the auction
     add_new_participant(the_name=name, money_amount=bet)    # adding people to auction list, need to redo until all
     # ready
     bidders = input("Are there any other bidders? Type 'yes' or 'no'. \n")
-    if bidders == "yes":
-        clear()
-    elif len(auction_bets) > 0:
-        bidders = "yes"
-    else:
-        bidders = "no"
 
-choose_winner()
 
 
 
