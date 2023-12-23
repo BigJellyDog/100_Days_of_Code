@@ -39,7 +39,7 @@ while bidders == "yes":     # while loop to add all the bidders to the auction
     bet = int(input("What is your bid? $"))
     add_new_participant(the_name=name, money_amount=bet)    # adding people to auction list, need to redo until all
     # ready
-    bidders = input("Are there any other bidders? Type 'yes' or 'no'. \n")
+    bidders = input("Are there any other bidders? Type 'yes' or 'no'. \n").lower()
     print("\n" * 1000)
     print(art.person_art)
     print(art.text_art)
@@ -55,5 +55,8 @@ while bidders == "yes":     # while loop to add all the bidders to the auction
         print("Two people bet the same amount, the auction will restart \n")
         bidders = "yes"
     else:
+        print("\n" * 1000)
+        print(art.person_art)
+        print(art.winner)
         print(f"The Winner is {winner_name[0]} with a bid of ${winner_bet[0]}")
         bidders = "no"
