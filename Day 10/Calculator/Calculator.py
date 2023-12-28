@@ -5,6 +5,7 @@ print(art.calculator_msg)
 
 
 def number_input(s):
+    """Asking for user input and returning it as a float number"""
     while True:
 
         number = input(s)
