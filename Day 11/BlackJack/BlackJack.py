@@ -194,7 +194,7 @@ while game:
                 print(f"Your cards are: ", f"Your balance is ${player_balance}")
                 print('\n'.join(map('  '.join, zip(*(card_art(c) for c in player_display)))))
                 if check_if_bust(calc_score(player_cards)):
-                    print(f"Player bust. You lose! Your score is {calc_score(player_cards)}")
+                    print(f"Player bust. LOSER! Your score is {calc_score(player_cards)}")
                     break
             elif hit_or_stand == "s":
                 print("\n" * 100)
