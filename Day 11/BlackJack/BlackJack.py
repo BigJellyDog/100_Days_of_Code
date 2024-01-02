@@ -176,7 +176,7 @@ while game:
             print(check_if_bust(player_score))
             break
         if player_score == 21:
-            print(f"BlackJack! You got {player_score} You win ${bet*2}!")
+            print(f"BlackJack! You got {player_score} You win ${bet * 2}!")
             player_turn = False
             player_balance += bet * 2
             break
@@ -221,9 +221,14 @@ while game:
         cp_score = calc_score(computer_cards)
         player_score = calc_score(player_cards)
         if cp_score > 21:
-            print(f"Dealer Busted with {cp_score}! You win ${bet*2}!")
+            print(f"Dealer Busted with {cp_score}! You win ${bet * 2}!")
             player_balance += bet * 2
             print(f"Your Balance is: ${player_balance}")
+            break
+        elif cp_score == 21 and player_score == 21:
+            print(f"It's a Draw!")
+            print(f"You get your money back")
+            player_balance += bet
             break
         elif cp_score > player_score:
             print(f"Dealer Win with {cp_score}! You lose with {player_score}!")
