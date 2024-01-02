@@ -3,28 +3,18 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
             'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
 
-# def encrypt(plain_text, shift_amount):
-#     encrypted_word = ""
-#     for letter in plain_text:
-#         if letter not in alphabet:
-#             encrypted_word += letter
-#         else:
-#             i = alphabet.index(letter)
-#             encrypted_word += alphabet[(i + shift_amount) % 52]
-#
-#     print(f"Here's the encoded result: {encrypted_word}")
-#
-#
-# def decrypt(encrypted_text, shift_amount):
-#     decrypted_word = ""
-#     for letter in encrypted_text:
-#         if letter not in alphabet:
-#             decrypted_word += letter
-#         else:
-#             i = alphabet.index(letter)
-#             decrypted_word += alphabet[(i - shift_amount) % 52]
-#
-#     print(f"Here's the decoded result: {decrypted_word}")
+def number_input(s):
+    """Asking for user input and returning it as a float number"""
+    while True:
+
+        number = input(s)
+        try:
+            number = int(number)
+            break
+        except:
+            print("Please choose a number")
+            continue
+    return number
 
 
 def caesar(start_text, shift_amount, cipher_direction):
@@ -46,9 +36,10 @@ coder = True
 print(art.art)
 while coder:
 
-    direction = input("Type 'encode' to encrypt, type 'decode to decrypt: \n").lower()
-    text = input("Type your message: \n")
-    shift = int(input("Type the shift number: \n"))
+    direction = input("Type 'encode' to encrypt, type 'decode to decrypt: ").lower()
+    text = input("Type your message: ")
+    shift = number_input("Type the shift number: ")
+    # shift = int(input("Type the shift number: "))
     caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
     coder = input("Type 'yes' if you want to go again. Otherwise type 'no': \n")
     if coder == "no":
