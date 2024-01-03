@@ -34,17 +34,17 @@ def compare_user_input(guessed_number):
         return "Too low.\nGuess again"
 
 
-print(art.welcome_to)
-time.sleep(3)
-print(art.guess)
-time.sleep(1)
-print(art.the)
-time.sleep(1)
-print(art.number)
-time.sleep(1)
-print("With Jelly")
-time.sleep(3)
-clear()
+# print(art.welcome_to)
+# time.sleep(3)
+# print(art.guess)
+# time.sleep(1)
+# print(art.the)
+# time.sleep(1)
+# print(art.number)
+# time.sleep(1)
+# print("With Jelly")
+# time.sleep(3)
+# clear()
 
 print("I'm thinking of a number between 1 and 100.")
 difficulty = ""
@@ -67,12 +67,17 @@ while game:
         except:
             print("Not funny :( -2 lives")
             attempts -= 2
-            continue
+            if attempts <= 0:
+                game = False
+                user_guess = 0
+                break
+            else:
+                continue
     result = compare_user_input(guessed_number=user_guess)
     print(result)
     if "win" in result:
         game = False
-    elif attempts == 0:
+    elif attempts <= 0:
         clear()
         print(art.lose)
         print(f"The number was {random_number}")
