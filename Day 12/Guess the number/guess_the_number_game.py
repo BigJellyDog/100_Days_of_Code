@@ -2,7 +2,7 @@ import random
 import time
 import art
 import os
-# PC choose a number
+
 
 
 def clear():
