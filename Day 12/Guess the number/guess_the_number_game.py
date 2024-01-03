@@ -34,17 +34,17 @@ def compare_user_input(guessed_number):
         return "Too low.\nGuess again"
 
 
-# print(art.welcome_to)
-# time.sleep(3)
-# print(art.guess)
-# time.sleep(1)
-# print(art.the)
-# time.sleep(1)
-# print(art.number)
-# time.sleep(1)
-# print("With Jelly")
-# time.sleep(3)
-# clear()
+print(art.welcome_to)
+time.sleep(3)
+print(art.guess)
+time.sleep(1)
+print(art.the)
+time.sleep(1)
+print(art.number)
+time.sleep(1)
+print("With Jelly")
+time.sleep(3)
+clear()
 
 print("I'm thinking of a number between 1 and 100.")
 difficulty = ""
