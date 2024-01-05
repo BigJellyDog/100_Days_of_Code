@@ -4,7 +4,6 @@ import art
 import os
 
 
-
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -26,6 +25,14 @@ def compare_user_input(guessed_number):
         return "BETWEEN 1 AND 100."
     elif guessed_number == random_number:
         return f"You win the number was {guessed_number}!"
+    elif random_number + 25 <= guessed_number < 100 or random_number - 25 >= guessed_number > 0:
+        # If guessed number is more then 25 points from the target
+        attempts -= 1
+        return "Way too cold :("
+    elif guessed_number in range(random_number - 5, random_number + 6):
+        # If the number is near to the random number
+        attempts -= 1
+        return "It's getting pretty HOT"
     elif guessed_number > random_number:
         attempts -= 1
         return "Too high.\nGuess again"
