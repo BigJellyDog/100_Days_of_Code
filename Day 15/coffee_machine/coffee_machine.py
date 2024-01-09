@@ -6,10 +6,10 @@ def insert_coins(drink_price):
     """Counting inserted coins by user"""
     print("Please insert coins:")
     try:
-        quarters = float((float(input("How many quarters?: ")) * 0.25))
-        dimes = float((float(input("How many dimes?: ")) * 0.10))
-        nickles = float((float(input("How many nickles?: ")) * 0.05))
-        pennies = float((float(input("How many pennies?: ")) * 0.01))
+        quarters = float((int(input("How many quarters?: ")) * 0.25))
+        dimes = float((int(input("How many dimes?: ")) * 0.10))
+        nickles = float((int(input("How many nickles?: ")) * 0.05))
+        pennies = float((int(input("How many pennies?: ")) * 0.01))
     except ValueError:
         return "Invalid input. Please use numbers for coins"
     inserted_value = quarters + dimes + nickles + pennies
