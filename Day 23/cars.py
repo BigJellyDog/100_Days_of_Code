@@ -16,21 +16,25 @@ class Car(Turtle):
         self.setheading(WEST)
         self.shape("square")
         self.shapesize(1, 2.5)
-        self.goto(400, random.choice(self.starting_y_coordinates))
+        self.goto(random.randrange(400, 800), random.choice(self.starting_y_coordinates))
 
     def drive(self):
         self.forward(5)
-        if self.xcor() < -400:
-            random_x = random.randrange(350, 400)
-            self.goto(random_x, random.choice(self.starting_y_coordinates))
 
-    def make_other_cars_drive(self):
-        random_car = random.choice(self.car_list)
-        random_car.drive()
+    def restart_car(self):
+        random_x = random.randrange(350, 400)
+        self.goto(random_x, random.choice(self.starting_y_coordinates))
 
     def make_random_cars(self):
-        for n in range(15, 30):
+        for n in range(5):
+            self.goto(400, random.choice(self.starting_y_coordinates))
             self.car_list.append(self)
+
+    def move_all_cars(self):
+        for cars in self.car_list:
+            cars.forward(random.randint(1, 5))
+            if cars.xcor() < -320:
+                cars.goto(400, random.choice(self.starting_y_coordinates))
 
     def remove_cars(self):
         self.car_list.clear()
