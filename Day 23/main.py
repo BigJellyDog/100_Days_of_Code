@@ -1,4 +1,5 @@
 import random
+from level_board import Board
 import time
 from turtle import Screen, Turtle
 from turtle_runner import Runner
@@ -13,25 +14,39 @@ screen.tracer(0)
 screen.listen()
 
 # Set up turtle and make it move
-tim = Runner()
-screen.onkeypress(tim.moving_up, "Up")
+player = Runner()
+scoreboard = Board()
+screen.onkeypress(player.moving_up, "Up")
+# Set up cars
+cars = Car()
 
-car = Car()
-car.make_random_cars()
+
+speed = 0.1
 
 game_on = True
 while game_on:
-    screen.update()
-    time.sleep(0.01)
 
-    for cars in car.car_list:
-        cars.drive()
+    screen.update()
+    time.sleep(speed)
+
+    cars.create_cars()
+    cars.move_cars()
+
+    for car in cars.all_cars:
+        if car.distance(player) < 20:
+            scoreboard.game_over()
+            game_on = False
+
+    if player.ycor() > 300:
+        cars.speed += 10
+        player.goto(0, -300)
+        scoreboard.increase_level()
 
 
 
 screen.exitonclick()
 
-# TODO: Set up cars
+
 # TODO: Set up road later
 # TODO: Set up level logic
 # TODO: Set up collision with cars
