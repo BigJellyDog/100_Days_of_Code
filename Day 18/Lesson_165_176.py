@@ -4,7 +4,10 @@ from random import choice
 
 tim = turtle.Turtle()
 screen = turtle.Screen()
+screen.bgcolor("black")
+screen.setup(800, 800)
 tim.shape("turtle")
+tim.hideturtle()
 tim.color("green")
 screen.colormode(255)
 tim.speed(10)
@@ -25,6 +28,21 @@ def tim_drawing_shapes():
         sides += 1
 
 
+def tim_drawing_shapes2():
+    sides = 3
+    for m in range(8):
+        a = choice(range(255))
+        b = choice(range(255))
+        c = choice(range(255))
+        for n in range(sides):
+            angle = -360 / sides
+            color = (a, b, c)
+            tim.pencolor(color)
+            tim.right(angle)
+            tim.forward(100)
+        sides += 1
+
+
 def tim_random_walk():
     tim.speed(10)
     tim.pensize(10)
@@ -34,12 +52,11 @@ def tim_random_walk():
         b = choice(range(255))
         c = choice(range(255))
         color = (a, b, c)
-        random_move = choice([tim.forward, tim.back])
-        random_turn = choice([tim.left, tim.right])
-        random_action = choice([random_turn(choice([0, 90, 180, 270])), random_move(30)])
+        # random_move = choice([tim.forward, tim.back])
+        # random_turn = choice([tim.left, tim.right])
+        # random_action = choice([random_turn(choice([0, 90, 180, 270])), random_move(30)])
         for n in range(5):
             tim.pencolor(color)
-            random_action
 
 
 def angela_random_walk():
@@ -71,5 +88,7 @@ def tim_random_circle():
 # angela_random_walk()
 # tim_random_walk()
 # tim_random_circle()
+tim_drawing_shapes()
+tim_drawing_shapes2()
 
 screen.exitonclick()

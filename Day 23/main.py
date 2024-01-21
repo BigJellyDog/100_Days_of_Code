@@ -43,7 +43,6 @@ while game_on:
         scoreboard.increase_level()
 
 
-
 screen.exitonclick()
 
 
