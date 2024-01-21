@@ -2,6 +2,10 @@
 #     contents = file.read()
 #     print(contents)
 
+# ../ == going 1 lvl up in directories
+# with open("../../../../../new_file.txt", mode="r") as file:
+#     print(file.read())
 
-with open("new_file.txt", mode="w") as file:
-    file.write("New text.")
+
+with open("../../../../../new_file.txt", mode="r") as file:
+    print(file.read())
