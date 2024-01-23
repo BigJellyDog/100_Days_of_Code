@@ -34,8 +34,13 @@ while game:
         screen.bgcolor("black")
         tim.pendown()
         tim.write("YOU WIN! CONGRATULATIONS!!!", align="center", font=('Courier', 25, 'normal'))
-        break
+        screen.bye()
     answer_state = screen.textinput(f"{correct}/50 States Correct", "Enter state name: ").title()
+    if answer_state == "Exit":
+        missing_states = [state for state in states if state not in correct_list]
+        new_data = pandas.DataFrame(missing_states)
+        new_data.to_csv("states_to_learn.csv")
+        break
     if answer_state in data_dir["states"]:
         position = data_dir["states"].index(answer_state)
         print(len(data_dir["states"]))
