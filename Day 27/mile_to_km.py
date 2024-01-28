@@ -3,7 +3,7 @@ KM = 1.60934
 
 
 def mile_to_km():
-    mile = int(input_window.get())
+    mile = float(input_window.get())
     label.config(text=f"is equal to {mile*KM}")
 
 
@@ -21,7 +21,7 @@ label_m.grid(column=2, row=0)
 label_km.grid(column=2, row=1)
 
 
-input_window = Entry()
+input_window = Entry(width=7)
 input_window.get()
 input_window.grid(column=1, row=0)
 
