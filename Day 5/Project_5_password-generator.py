@@ -15,17 +15,16 @@ final_password = ""
 
 for n in range(nr_letters):
     password_list += random.choice(letters)
-    random.shuffle(password_list)
 
 for n in range(nr_symbols):
     password_list += random.choice(symbols)
-    random.shuffle(password_list)
 
 for n in range(nr_numbers):
     password_list += random.choice(numbers)
-    random.shuffle(password_list)
 
+random.shuffle(password_list)
 for n in password_list:
     final_password += n
+
 
 print(final_password)

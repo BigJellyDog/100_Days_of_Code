@@ -69,12 +69,13 @@ def resume_timer():
 def resource_path(relative_path):
     """ Get absolute path to resource, for PyInstaller """
     try:
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = sys._MEIPASS
+        # PyInstaller creates a temp folder and stores path in
+        base_path = sys
     except Exception:
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
+
 
 image_path = resource_path('tomato_tomato.png')
 
@@ -84,9 +85,13 @@ def ring_bell():
 
 
 def start_timer():
-    global reps, timer_active
-    if not timer_active:
+    global reps, timer_active, is_paused
+    if is_paused:
+        resume_timer()
+
+    elif not timer_active:
         timer_active = True
+        is_paused = False
         reps += 1
         work_sec = WORK_MIN * 60
         short_break_sec = SHORT_BREAK_MIN * 60
@@ -133,7 +138,7 @@ def count_down(count):
 
 window = Tk()
 window.title("TomatoClocko")
-window.config(padx=100, pady=50, bg=GREY)
+window.config(padx=50, pady=0, bg=GREY)
 
 
 canvas = Canvas(width=500, height=520, bg=GREY, highlightthickness=0)
@@ -146,6 +151,9 @@ timer_text = Label(text="TomatoTimer", bg=GREY, fg=RED, font=(FONT_NAME, 50, "bo
 timer_text.grid(column=1, row=0)
 check_mark = Label(bg=GREY, fg=RED, font=(FONT_NAME, 50, "bold"))
 check_mark.grid(column=1, row=4)
+
+icon = PhotoImage(file=image_path)
+window.call('wm', 'iconphoto',window._w, icon)
 
 
 start_button = Button(text="Start", bg=GREY, command=start_timer, font=(FONT_NAME, 15, "bold"))
