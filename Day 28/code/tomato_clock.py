@@ -67,13 +67,12 @@ def resume_timer():
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 
 def resource_path(relative_path):
-    """ Get absolute path to resource, for PyInstaller """
+    """ Get absolute path to resource, works for development and for PyInstaller """
     try:
-        # PyInstaller creates a temp folder and stores path in
-        base_path = sys
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     except Exception:
         base_path = os.path.abspath(".")
-
     return os.path.join(base_path, relative_path)
 
 
@@ -153,7 +152,7 @@ check_mark = Label(bg=GREY, fg=RED, font=(FONT_NAME, 50, "bold"))
 check_mark.grid(column=1, row=4)
 
 icon = PhotoImage(file=image_path)
-window.call('wm', 'iconphoto',window._w, icon)
+window.call('wm', 'iconphoto',window, icon)
 
 
 start_button = Button(text="Start", bg=GREY, command=start_timer, font=(FONT_NAME, 15, "bold"))

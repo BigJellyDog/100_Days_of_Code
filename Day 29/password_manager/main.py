@@ -56,13 +56,15 @@ def save_data():
             password_input.insert(0, "Password:")
             website_input.focus()
 
+# --------------------------------------- UPDATING GIF --------------------------------------#
+
 
 # --------------------------------------- UI ----------------------------------------------- #
 
 
 window = Tk()
 window.title("Password Manager")
-window.config(padx=25, pady=25, bg=GREY)
+window.config(padx=0, pady=0, bg=GREY)
 
 # making canvas and the
 canvas = Canvas(width=200, height=200, bg=GREY, highlightthickness=0)
