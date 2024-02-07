@@ -88,15 +88,19 @@ def unpack_gif(src):
 def save_data(website_data, username_data, password_data):
     csv_file_path = "data.csv"
 
+    web_data = website_data.get()
+    user_data = username_data.get()
+    pass_data = password_data.get()
+
     if (
-            website_data in ["", "Website"] or
-            username_data in ["", "Username"] or
-            password_data in ["", "Password"]
+            web_data in ["", "Website"] or
+            user_data in ["", "Username"] or
+            pass_data in ["", "Password"]
     ):
         messagebox.showerror(title="Oops", message="Please don't leave any fields empty!")
         return
 
-    new_data = pd.DataFrame({"Website": [website_data], "Username": [username_data], "Password": [password_data]})
+    new_data = pd.DataFrame({"Website": [web_data], "Username": [user_data], "Password": [pass_data]})
 
     try:
         existing_data = pd.read_csv(csv_file_path)
@@ -109,7 +113,6 @@ def save_data(website_data, username_data, password_data):
     website_data.delete(0, END)
     password_data.delete(0, END)
     username_data.delete(0, END)
-
     website_data.insert(0, 'Website')
     username_data.insert(0, 'Username')
     password_data.insert(0, 'Password')
@@ -180,7 +183,7 @@ def library():
             password.insert(0, "yourpassword")
             save_button = Button(small_window, text="Save", bd=0, bg=BOXCOLOR, font=(FONT_NAME, 10))
             delete_button = Button(small_window, text="Delete", bd=0, bg=BOXCOLOR, font=(FONT_NAME, 10))
-            save_button.grid(row=3, column=0, sticky="ew", command=save_data())
+            save_button.grid(row=3, column=0, sticky="ew")
             delete_button.grid(row=3, column=1, sticky="ew")
 
 
@@ -218,9 +221,9 @@ def update_frame():
         frame_index = 0  # Reset for the next animation cycle
         label.configure(image=gif_frames[0])  # Optionally reset to the first frame
         save_data(
-                  website_data=website_entry.get(),
-                  username_data=email_entry.get(),
-                  password_data=password_entry.get()
+                  website_data=website_entry,
+                  username_data=email_entry,
+                  password_data=password_entry
                   )  # Call save_data function automatically after animation ends
 
 
