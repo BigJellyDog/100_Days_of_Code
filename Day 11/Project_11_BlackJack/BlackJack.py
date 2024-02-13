@@ -1,6 +1,16 @@
 import random
 import art
 import time
+import pyautogui
+
+
+def clear(key):
+    """
+    Pressing the clear key for you
+    insert the key name into the input as string
+    """
+    pyautogui.press(key)
+
 
 suits = ('♥', '♦', '♠', '♣')
 ranks = ('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A')
@@ -133,6 +143,7 @@ game = True
 while game:
 
     cp_turn = False
+    clear("F10")
     print(art.welcome_to_blackjack)
     start = input(art.would_you_like_to_play)  # Player presses Enter to start playing
     # print("\n" * 1000)
@@ -187,7 +198,7 @@ while game:
                 player_display = []
                 for x, y in player_cards:
                     player_display.append(str(x + " " + y))
-                print("\n" * 100)
+                clear("F10")
                 print(art.blackjack_line)
                 print("Dealer cards are: ")
                 print('\n'.join(map('  '.join, zip(*(card_art(c) for c in computer_display)))))
@@ -197,7 +208,7 @@ while game:
                     print(f"Player bust. LOSER! Your score is {calc_score(player_cards)}")
                     break
             elif hit_or_stand == "s":
-                print("\n" * 100)
+                clear("F10")
                 print(art.blackjack_line)
                 print("Dealer cards are: ")
                 print('\n'.join(map('  '.join, zip(*(card_art(c) for c in computer_display)))))
@@ -207,7 +218,7 @@ while game:
                 cp_turn = True
 
     while cp_turn:
-        print("\n" * 100)
+        clear("F10")
         comp_deal()
         computer_display = []
         for x, y in computer_cards:
@@ -242,4 +253,5 @@ while game:
             game = True
         else:
             game = False
+            clear("F10")
             print(art.good_bye)
