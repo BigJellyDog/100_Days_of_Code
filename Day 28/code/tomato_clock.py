@@ -76,7 +76,7 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-image_path = resource_path('tomato_tomato.png')
+image_path = resource_path('../../MyOwnStuff/NewTomatoClock/tomato_tomato.png')
 
 
 def ring_bell():
