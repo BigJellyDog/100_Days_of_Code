@@ -46,6 +46,3 @@ while game_on:
 screen.exitonclick()
 
 
-# TODO: Set up road later
-# TODO: Set up level logic
-# TODO: Set up collision with cars

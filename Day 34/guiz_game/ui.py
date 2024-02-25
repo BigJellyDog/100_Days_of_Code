@@ -1,7 +1,7 @@
 from tkinter import *
 from quiz_brain import QuizBrain
 from data import question_data
-import requests
+
 
 THEME_COLOR = "#375362"
 FONT = "Arial"
@@ -103,4 +103,3 @@ class QuizInterface:
         else:
             self.canvas.configure(bg="red")
             self.window.after(1000, func=self.get_next_question)
-
